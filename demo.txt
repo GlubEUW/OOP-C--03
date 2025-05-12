@@ -1,0 +1,72 @@
+Initial Bank Details:
+Bank: Demo Bank
+Available Funds: $15000
+Current Strategy: No strategy set
+
+Stock Investment Details: Investing $3000 using Stock strategy (Risk rating: 0.5)
+After investing $3000 in stocks, the investment grew to $3525
+Bank Details:
+Bank: Demo Bank
+Available Funds: $12000
+Current Strategy: Stock
+
+Updated Stock Risk Rating to 0.7
+Potential return on $3000 investment in stocks: $300
+
+Bond Investment Details: Investing $2000 using Bond strategy (Risk rating: 0.2) with 4% interest over 3 years
+After investing $2000 in bonds, the investment grew to $2249.73
+Bank Details:
+Bank: Demo Bank
+Available Funds: $10000
+Current Strategy: Bond
+
+Updated Bond Terms: Interest Rate = 4.5%, Term = 5 years
+New potential return for $2000 in bonds: $450
+
+Extended Multi-Year Simulation:
+Year 1:
+Invested $1500 in stocks; result: $1807.5
+Stock Details for investment: Investing $1500 using Stock strategy (Risk rating: 0.7)
+Bank Details at End of Year 1:
+Bank: Demo Bank
+Available Funds: $9500
+Current Strategy: Stock
+
+Year 2:
+Invested $1500 in bonds; result: $1869.27
+Bond Details for investment: Investing $1500 using Bond strategy (Risk rating: 0.2) with 4.5% interest over 5 years
+Bank Details at End of Year 2:
+Bank: Demo Bank
+Available Funds: $9000
+Current Strategy: Bond
+
+Year 3:
+Invested $1500 in stocks; result: $1807.5
+Stock Details for investment: Investing $1500 using Stock strategy (Risk rating: 0.7)
+Bank Details at End of Year 3:
+Bank: Demo Bank
+Available Funds: $8500
+Current Strategy: Stock
+
+Year 4:
+Invested $1500 in bonds; result: $1869.27
+Bond Details for investment: Investing $1500 using Bond strategy (Risk rating: 0.2) with 4.5% interest over 5 years
+Bank Details at End of Year 4:
+Bank: Demo Bank
+Available Funds: $8000
+Current Strategy: Bond
+
+Year 5:
+Invested $1500 in stocks; result: $1807.5
+Stock Details for investment: Investing $1500 using Stock strategy (Risk rating: 0.7)
+Bank Details at End of Year 5:
+Bank: Demo Bank
+Available Funds: $7500
+Current Strategy: Stock
+
+Withdrawal of $1000.0 was successful.
+Final Bank Details:
+Bank: Demo Bank
+Available Funds: $6500
+Current Strategy: Stock
+
