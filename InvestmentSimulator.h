@@ -17,6 +17,7 @@ class StockInvestment;
 class BondInvestment;
 class Bank;
 
+
 class InvestmentStrategy {
 protected:
     std::string strategyName;
@@ -25,14 +26,13 @@ public:
     InvestmentStrategy(const std::string& name, double risk);
     virtual ~InvestmentStrategy();
     
-    virtual double invest(double amount) const = 0;
-    virtual double calculatePotentialReturn(double amount) const = 0;
-    virtual double calculateRisk() const = 0;
+    virtual double invest(double amount) const;
+    virtual double calculatePotentialReturn(double amount) const;
+    virtual double calculateRisk() const;
     
     virtual std::string getStrategyName() const;
     virtual double getRiskRating() const;
     virtual void setRiskRating(double risk);
-    
     virtual std::string getInvestmentDetails(double amount) const;
 };
 
