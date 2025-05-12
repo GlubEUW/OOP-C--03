@@ -3,8 +3,14 @@
 
 #include <string>
 #include <memory>
-#include <iostream>
 #include <cmath>
+#include <stdexcept>
+#include <sstream>
+
+class InvestmentException : public std::runtime_error {
+public:
+    explicit InvestmentException(const std::string& message);
+};
 
 class InvestmentStrategy;
 class StockInvestment;
@@ -12,23 +18,34 @@ class BondInvestment;
 class Bank;
 
 class InvestmentStrategy {
+protected:
+    std::string strategyName;
+    double riskRating;
 public:
-    virtual ~InvestmentStrategy() = default;
+    InvestmentStrategy(const std::string& name, double risk);
+    virtual ~InvestmentStrategy();
+    
     virtual double invest(double amount) const = 0;
-    virtual std::string getStrategyName() const = 0;
+    virtual double calculatePotentialReturn(double amount) const = 0;
+    virtual double calculateRisk() const = 0;
+    
+    virtual std::string getStrategyName() const;
+    virtual double getRiskRating() const;
+    virtual void setRiskRating(double risk);
+    
+    virtual std::string getInvestmentDetails(double amount) const;
 };
 
 class StockInvestment : public InvestmentStrategy {
 private:
-    double riskFactor;
     double expectedReturn;
-
 public:
     StockInvestment(double risk = 0.5, double returnRate = 0.12);
+    
     double invest(double amount) const override;
-    std::string getStrategyName() const override;
-    double getRiskFactor() const;
-    void setRiskFactor(double risk);
+    double calculatePotentialReturn(double amount) const override;
+    double calculateRisk() const override;
+    
     double getExpectedReturn() const;
     void setExpectedReturn(double returnRate);
 };
@@ -37,15 +54,20 @@ class BondInvestment : public InvestmentStrategy {
 private:
     double interestRate;
     int termYears;
-
 public:
     BondInvestment(double rate = 0.05, int years = 5);
+    
     double invest(double amount) const override;
-    std::string getStrategyName() const override;
+    double calculatePotentialReturn(double amount) const override;
+    double calculateRisk() const override;
+    
     double getInterestRate() const;
     void setInterestRate(double rate);
+    
     int getTermYears() const;
     void setTermYears(int years);
+    
+    std::string getInvestmentDetails(double amount) const override;
 };
 
 class Bank {
@@ -53,17 +75,21 @@ private:
     std::shared_ptr<InvestmentStrategy> strategy;
     std::string name;
     double availableFunds;
-
 public:
     Bank(const std::string& bankName, double initialFunds = 0.0);
+    
     void setStrategy(std::shared_ptr<InvestmentStrategy> newStrategy);
     double executeInvestment(double amount);
+    
     std::string getCurrentStrategyName() const;
     std::string getName() const;
     void setName(const std::string& bankName);
+    
     double getAvailableFunds() const;
     void depositFunds(double amount);
     bool withdrawFunds(double amount);
+    
+    std::string getDetails() const;
 };
 
-#endif
+#endif // INVESTMENT_SIMULATOR_H
