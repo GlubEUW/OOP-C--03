@@ -39,36 +39,44 @@ public:
 class StockInvestment : public InvestmentStrategy {
 private:
     double expectedReturn;
+    double volatilityFactor;
+    double dividendYield;
 public:
-    StockInvestment(double risk = 0.5, double returnRate = 0.12);
-    
+    StockInvestment(double risk = 0.5, double returnRate = 0.12, double volatility = 0.2, double divYield = 0.03);
     double invest(double amount) const override;
     double calculatePotentialReturn(double amount) const override;
     double calculateRisk() const override;
-    
     double getExpectedReturn() const;
     void setExpectedReturn(double returnRate);
+    double getVolatilityFactor() const;
+    void setVolatilityFactor(double volatility);
+    double getDividendYield() const;
+    void setDividendYield(double divYield);
 };
+
 
 class BondInvestment : public InvestmentStrategy {
 private:
     double interestRate;
     int termYears;
+    double inflationRate;
+    bool callable;
 public:
-    BondInvestment(double rate = 0.05, int years = 5);
-    
+    BondInvestment(double rate = 0.05, int years = 5, double inflation = 0.02, bool isCallable = false);
     double invest(double amount) const override;
     double calculatePotentialReturn(double amount) const override;
     double calculateRisk() const override;
-    
     double getInterestRate() const;
     void setInterestRate(double rate);
-    
     int getTermYears() const;
     void setTermYears(int years);
-    
+    double getInflationRate() const;
+    void setInflationRate(double inflation);
+    bool isCallable() const;
+    void setCallable(bool isCallable);
     std::string getInvestmentDetails(double amount) const override;
 };
+
 
 class Bank {
 private:
