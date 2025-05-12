@@ -1,0 +1,23 @@
+StockInvestment invest returns > principal PASSED
+StockInvestment calculatePotentialReturn > 0 PASSED
+StockInvestment calculateRisk > 0 PASSED
+StockInvestment getInvestmentDetails not empty PASSED
+StockInvestment set/getExpectedReturn PASSED
+StockInvestment set/getVolatilityFactor PASSED
+StockInvestment set/getDividendYield PASSED
+BondInvestment invest returns > principal PASSED
+BondInvestment calculatePotentialReturn > 0 PASSED
+BondInvestment calculateRisk > 0 PASSED
+BondInvestment getInvestmentDetails not empty PASSED
+BondInvestment set/getInterestRate PASSED
+BondInvestment set/getTermYears PASSED
+BondInvestment set/getInflationRate PASSED
+BondInvestment set/getCallable PASSED
+CryptoInvestment invest returns > principal PASSED
+CryptoInvestment calculatePotentialReturn > 0 PASSED
+CryptoInvestment calculateRisk > 0 PASSED
+CryptoInvestment getInvestmentDetails not empty PASSED
+CryptoInvestment set/getCryptoName PASSED
+CryptoInvestment set/getCryptoVolatility PASSED
+CryptoInvestment set/getHypeFactor PASSED
+Bank Polymorphism executeInvestment > 0 PASSED
