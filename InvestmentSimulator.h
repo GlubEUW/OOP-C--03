@@ -77,6 +77,28 @@ public:
     std::string getInvestmentDetails(double amount) const override;
 };
 
+class CryptoInvestment : public InvestmentStrategy {
+private:
+    double cryptoVolatility;
+    double hypeFactor;
+    std::string cryptoName;
+public:
+    CryptoInvestment(const std::string& cryptoName, double risk = 0.9, double volatility = 1.0, double hype = 1.2);
+    //hint: nothing fancy
+    virtual double invest(double amount) const override;
+    virtual double calculatePotentialReturn(double amount) const override; 
+    virtual double calculateRisk() const override;
+    virtual std::string getInvestmentDetails(double amount) const override;
+
+    double getCryptoVolatility() const;
+    void setCryptoVolatility(double volatility);
+
+    double getHypeFactor() const;
+    void setHypeFactor(double hype);
+
+    std::string getCryptoName() const;
+    void setCryptoName(const std::string& name);
+};
 
 class Bank {
 private:
@@ -99,5 +121,6 @@ public:
     
     std::string getDetails() const;
 };
+
 
 #endif // INVESTMENT_SIMULATOR_H

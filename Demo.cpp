@@ -13,16 +13,18 @@ int main() {
         std::cout << "Investment Result: " << baseResult << "\n";
         std::cout << bank.getDetails() << "\n\n";
 
+        // POLYMORPHISM
         bank.setStrategy(std::make_shared<StockInvestment>(0.5, 0.15, 0.3, 0.04));
         std::cout << "Switched to Stock Strategy:\n";
         double stockResult = bank.executeInvestment(2000.0);
-        std::cout << "Investment Result: " << stockResult << "\n";
+        std::cout << "Investment Result: " << stockResult << "\n"; // SHOULD BE DIFFERENT RESULT FROM THE OTHER ONES
         std::cout << bank.getDetails() << "\n\n";
 
+        // POLYMORPHISM
         bank.setStrategy(std::make_shared<BondInvestment>(0.06, 7, 0.025, true));
         std::cout << "Switched to Bond Strategy:\n";
         double bondResult = bank.executeInvestment(2000.0);
-        std::cout << "Investment Result: " << bondResult << "\n";
+        std::cout << "Investment Result: " << bondResult << "\n"; // SHOULD BE DIFFERENT RESULT FROM THE OTHER ONES
         std::cout << bank.getDetails() << "\n\n";
     }
     catch(const InvestmentException& ex) {
