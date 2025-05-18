@@ -54,18 +54,26 @@ public:
     void setDividendYield(double divYield);
 };
 
-
 class BondInvestment : public InvestmentStrategy {
 private:
     double interestRate;
     int termYears;
     double inflationRate;
     bool callable;
+
+    // Internal configuration variables
+    double callableAdjustment;
+    double baseRiskWeight;
+    double inflationAdjustment;
+
 public:
-    BondInvestment(double rate = 0.05, int years = 5, double inflation = 0.02, bool isCallable = false);
+    BondInvestment(double rate = 0.05, int years = 5, double inflation = 0.02, bool isCallable = false,
+                   double callableAdj = 0.9, double riskWeight = 0.8, double inflationAdj = 1.0);
+
     double invest(double amount) const override;
     double calculatePotentialReturn(double amount) const override;
     double calculateRisk() const override;
+
     double getInterestRate() const;
     void setInterestRate(double rate);
     int getTermYears() const;
@@ -74,31 +82,19 @@ public:
     void setInflationRate(double inflation);
     bool isCallable() const;
     void setCallable(bool isCallable);
+
+    // Getters and setters for new variables
+    double getCallableAdjustment() const;
+    void setCallableAdjustment(double adj);
+    double getBaseRiskWeight() const;
+    void setBaseRiskWeight(double weight);
+    double getInflationAdjustment() const;
+    void setInflationAdjustment(double adj);
+
     std::string getInvestmentDetails(double amount) const override;
 };
 
-class CryptoInvestment : public InvestmentStrategy {
-private:
-    double cryptoVolatility;
-    double hypeFactor;
-    std::string cryptoName;
-public:
-    CryptoInvestment(const std::string& cryptoName, double risk = 0.9, double volatility = 1.0, double hype = 1.2);
-    //hint: nothing fancy
-    virtual double invest(double amount) const override;
-    virtual double calculatePotentialReturn(double amount) const override; 
-    virtual double calculateRisk() const override;
-    virtual std::string getInvestmentDetails(double amount) const override;
 
-    double getCryptoVolatility() const;
-    void setCryptoVolatility(double volatility);
-
-    double getHypeFactor() const;
-    void setHypeFactor(double hype);
-
-    std::string getCryptoName() const;
-    void setCryptoName(const std::string& name);
-};
 
 class Bank {
 private:
